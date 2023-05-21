@@ -48,4 +48,5 @@ public class PolicyService {
     public List<Policy> getPoliciesByTopic(String topic) {
         return policyRepository.findByTopic(topic);
     }
+
 }

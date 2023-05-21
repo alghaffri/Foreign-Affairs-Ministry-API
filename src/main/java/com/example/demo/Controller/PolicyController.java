@@ -32,6 +32,23 @@ public class PolicyController {
         List<Policy> policies = policyService.getAllPolicies();
         return new ResponseEntity<>(policies, HttpStatus.OK);
     }
+    @GetMapping("/country/{country}")
+    public ResponseEntity<List<Policy>> getPoliciesByCountry(@PathVariable String country) {
+        List<Policy> policies = policyService.getPoliciesByCountry(country);
+        return new ResponseEntity<>(policies, HttpStatus.OK);
+    }
+
+    @GetMapping("/region/{region}")
+    public ResponseEntity<List<Policy>> getPoliciesByRegion(@PathVariable String region) {
+        List<Policy> policies = policyService.getPoliciesByRegion(region);
+        return new ResponseEntity<>(policies, HttpStatus.OK);
+    }
+
+    @GetMapping("/topic/{topic}")
+    public ResponseEntity<List<Policy>> getPoliciesByTopic(@PathVariable String topic) {
+        List<Policy> policies = policyService.getPoliciesByTopic(topic);
+        return new ResponseEntity<>(policies, HttpStatus.OK);
+    }
 
 
 }

@@ -10,4 +10,6 @@ public interface PolicyRepository extends JpaRepository<Policy, Long> {
     List<Policy> findByRegion(String region);
     List<Policy> findByTopic(String topic);
 
+
+
 }

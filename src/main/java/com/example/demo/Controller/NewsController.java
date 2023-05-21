@@ -28,4 +28,10 @@ public class NewsController {
         List<News> news = newsService.getAllNews();
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<News> getNewsById(@PathVariable Long id) {
+        News news = newsService.getNewsById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("News not found with id: " + id));
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
 }

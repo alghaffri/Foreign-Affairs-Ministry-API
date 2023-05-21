@@ -25,10 +25,13 @@ public class PolicyController {
         return new ResponseEntity<>(newPolicy, HttpStatus.CREATED);
     }
 
+
+
     @GetMapping
     public ResponseEntity<List<Policy>> getAllPolicies() {
         List<Policy> policies = policyService.getAllPolicies();
         return new ResponseEntity<>(policies, HttpStatus.OK);
     }
+    
 
 }

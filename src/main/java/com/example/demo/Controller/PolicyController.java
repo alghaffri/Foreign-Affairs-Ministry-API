@@ -32,6 +32,6 @@ public class PolicyController {
         List<Policy> policies = policyService.getAllPolicies();
         return new ResponseEntity<>(policies, HttpStatus.OK);
     }
-    
+
 
 }

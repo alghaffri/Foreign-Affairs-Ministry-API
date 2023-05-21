@@ -34,4 +34,9 @@ public class NewsController {
                 .orElseThrow(() -> new ResourceNotFoundException("News not found with id: " + id));
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<News> updateNews(@PathVariable Long id, @RequestBody News news) {
+        News updatedNews = newsService.updateNews(news);
+        return new ResponseEntity<>(updatedNews, HttpStatus.OK);
+    }
 }

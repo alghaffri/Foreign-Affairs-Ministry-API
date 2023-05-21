@@ -45,4 +45,21 @@ public class NewsController {
         newsService.deleteNews(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/country/{country}")
+    public ResponseEntity<List<News>> getNewsByCountry(@PathVariable String country) {
+        List<News> news = newsService.getNewsByCountry(country);
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @GetMapping("/region/{region}")
+    public ResponseEntity<List<News>> getNewsByRegion(@PathVariable String region) {
+        List<News> news = newsService.getNewsByRegion(region);
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    @GetMapping("/title/{title}")
+    public ResponseEntity<List<News>> getNewsByTitle(@PathVariable String title) {
+        List<News> news = newsService.getNewsByTitle(title);
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
 }

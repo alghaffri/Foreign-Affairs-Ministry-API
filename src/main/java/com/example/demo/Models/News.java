@@ -28,7 +28,21 @@ public class News {
     @Column(nullable = false)
     private String details;
 
-  
+
+
+    // constructors
+
+    public News() {
+    }
+
+    public News(String title, String country, String region, String details) {
+        this.title = title;
+        this.country = country;
+        this.region = region;
+        this.details = details;
+    }
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Models.News;
+import com.example.demo.ResponseObjects.ResourceNotFoundException;
 import com.example.demo.Service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -62,4 +62,8 @@ public class NewsController {
         List<News> news = newsService.getNewsByTitle(title);
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
+
+
+
+    
 }

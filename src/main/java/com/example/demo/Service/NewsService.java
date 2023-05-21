@@ -36,5 +36,16 @@ public class NewsService {
     public void deleteNews(Long id) {
         newsRepository.deleteById(id);
     }
+    public List<News> getNewsByCountry(String country) {
+        return newsRepository.findByCountry(country);
+    }
+
+    public List<News> getNewsByRegion(String region) {
+        return newsRepository.findByRegion(region);
+    }
+
+    public List<News> getNewsByTitle(String title) {
+        return newsRepository.findByTitleContaining(title);
+    }
 
 }

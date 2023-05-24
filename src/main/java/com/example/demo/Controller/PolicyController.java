@@ -54,12 +54,8 @@ public class PolicyController {
         Policy policy = new Policy();
         policy.setCountry(requestPolicy.getCountry());
         policy.setRegion(requestPolicy.getRegion());
-        policy.setBankName("Sohar");
-        policy.setBankBranch("Rustaq");
-        policy.setBranchCode(398);
-        policy.setSwiftCode("656757");
-        policy.setCreatedDate(new Date());
-        policy.setAccountHolderName("sami");
+        policy.setTopic(requestPolicy.getTopic());
+        policy.setDetails(requestPolicy.getDetails());
         policy.setIsActive(true);
         policy.setCreatedDate(new Date());
         policyService.saveAccount(account);

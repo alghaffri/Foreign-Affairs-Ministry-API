@@ -1,0 +1,13 @@
+package com.example.demo.Models;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Date;
+
+@Getter
+@Setter
+@Data
+public class BaseEntity {
+

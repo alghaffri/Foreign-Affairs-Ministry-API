@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Setter
 @Entity
 @Data
-public class Policy {
+public class Policy extends BaseEntity{
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;

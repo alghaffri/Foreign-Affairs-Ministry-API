@@ -1,23 +1,23 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Models.Policy;
+import com.example.demo.RequestObjects.RequestPolicy;
 import com.example.demo.Service.PolicyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/policies")
 public class PolicyController {
-    private final PolicyService policyService;
-
     @Autowired
-    public PolicyController(PolicyService policyService) {
-        this.policyService = policyService;
-    }
+    PolicyService policyService;
+
+
 
     @PostMapping
     public ResponseEntity<Policy> addPolicy(@RequestBody Policy policy) {
@@ -50,5 +50,26 @@ public class PolicyController {
         return new ResponseEntity<>(policies, HttpStatus.OK);
     }
 
+    public void createPolicy(RequestPolicy requestPolicy){
+        Policy policy = new Policy();
+        policy.setCountry(requestPolicy.getCountry());
+        policy.setRegion(requestPolicy.getRegion());
+        policy.setBankName("Sohar");
+        policy.setBankBranch("Rustaq");
+        policy.setBranchCode(398);
+        policy.setSwiftCode("656757");
+        policy.setCreatedDate(new Date());
+        policy.setAccountHolderName("sami");
+        policy.setIsActive(true);
+        policy.setCreatedDate(new Date());
+        policyService.saveAccount(account);
 
+
+
+    }
+    @RequestMapping("policy/create")
+    public void savePolicy()
+    {
+        createPolicy();
+    }
 }

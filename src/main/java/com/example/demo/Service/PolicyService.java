@@ -10,15 +10,14 @@ import java.util.Optional;
 
 @Service
 public class PolicyService {
-    private final PolicyRepository policyRepository;
-
     @Autowired
-    public PolicyService(PolicyRepository policyRepository) {
-        this.policyRepository = policyRepository;
-    }
+     PolicyRepository policyRepository;
 
-    public Policy addPolicy(Policy policy) {
-        return policyRepository.save(policy);
+
+
+
+    public void addPolicy(Policy policy) {
+         policyRepository.save(policy);
     }
 
     public List<Policy> getAllPolicies() {
@@ -37,16 +36,6 @@ public class PolicyService {
         policyRepository.deleteById(id);
     }
 
-    public List<Policy> getPoliciesByCountry(String country) {
-        return policyRepository.findByCountry(country);
-    }
 
-    public List<Policy> getPoliciesByRegion(String region) {
-        return policyRepository.findByRegion(region);
-    }
-
-    public List<Policy> getPoliciesByTopic(String topic) {
-        return policyRepository.findByTopic(topic);
-    }
 
 }

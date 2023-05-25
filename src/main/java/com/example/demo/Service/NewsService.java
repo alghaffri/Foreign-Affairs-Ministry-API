@@ -14,28 +14,26 @@ public class NewsService {
 
 
     NewsRepository newsRepository;
-
-
-    public News addNews(News news) {
-        return newsRepository.save(news);
+    public void addPolicy(News news) {
+        newsRepository.save(news);
     }
 
-    public List<News> getAllNews() {
-        return newsRepository.findAll();
-    }
-
-    public Optional<News> getNewsById(Long id) {
-        return newsRepository.findById(id);
-    }
-
-    public News updateNews(News news) {
-        return newsRepository.save(news);
-    }
-
-    public void deleteNews(Long id) {
-        newsRepository.deleteById(id);
+    public void updateNews(Long newsId, String title , String country ,String region ,String details) {
+        Optional<News> optionalNews = newsRepository.findById(newsId);
+        if (optionalNews.isPresent()) {
+            News news = optionalNews.get();
+            news.setTitle(title);
+            news.setCountry(country);
+            news.setRegion(region);
+            news.setDetails(details);
+            newsRepository.save(news);
+        } else {
+            System.out.print("NOT FOUND");
+        }
     }
 
 
-
+    public List<News> getNewsByRegion(String region) {
+        return newsRepository.findByRegion(region);
+    }
 }

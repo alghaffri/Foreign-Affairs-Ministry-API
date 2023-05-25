@@ -36,6 +36,18 @@ public class PolicyService {
         policyRepository.deleteById(id);
     }
 
-
+    public Policy updatePolicy(Long id, Policy updatedPolicy) {
+        Optional<Policy> optionalPolicy = policyRepository.findById(id);
+        if (optionalPolicy.isPresent()) {
+            Policy existingPolicy = optionalPolicy.get();
+            existingPolicy.setCountry(updatedPolicy.getCountry());
+            existingPolicy.setRegion(updatedPolicy.getRegion());
+            existingPolicy.setTopic(updatedPolicy.getTopic());
+            existingPolicy.setDetails(updatedPolicy.getDetails());
+            return policyRepository.save(existingPolicy);
+        } else {
+            throw new ResourceNotFoundException("Policy not found with id: " + id);
+        }
+    }
 
 }

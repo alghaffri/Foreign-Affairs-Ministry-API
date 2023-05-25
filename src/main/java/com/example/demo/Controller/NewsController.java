@@ -31,6 +31,24 @@ public class NewsController {
         news.setCreatedDate(new Date());
         newsService.addPolicy(news);
     }
+    @PutMapping("/api/news/{newsId}")
+    public ResponseEntity<String> updateNews(@PathVariable Long newsId, @RequestBody updateNews update) {
+        try {
+            String country = update.getCountry() ;
+            String region =update.getRegion();
+            String title=update.getTitle();
+            String details=update.getDetails();
+            newsService.updateNews(newsId,title,country,region,details);
+            return ResponseEntity.ok("updated successfully");
+        } catch (NewsNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping("/api/news")
+    public ResponseEntity<List<News>> getNewsByCountry(@RequestParam("region") String region) {
+        List<News> newsList = newsService.getNewsByRegion(region);
+        return new ResponseEntity<>(newsList, HttpStatus.OK);
+    }
 
 
 

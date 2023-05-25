@@ -16,14 +16,14 @@ import javax.persistence.Id;
 public class Policy extends BaseEntity{
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-     Long id;
+    Long id;
 
     String country;
     String region;
     String topic;
     String details;
 
-
+ 
 
 
 }

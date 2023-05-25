@@ -23,7 +23,7 @@ public class Policy extends BaseEntity{
     String topic;
     String details;
 
- 
+
 
 
 }

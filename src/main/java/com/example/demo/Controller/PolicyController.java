@@ -34,6 +34,10 @@ public class PolicyController {
         policy.setCreatedDate(new Date());
         policyService.addPolicy(policy);
     }
-
+    @GetMapping("/api/policies")
+    public ResponseEntity<List<Policy>> getNewsByCountry(@RequestParam("country") String country) {
+        List<Policy> policyList = policyService.getPolicyByCountry(country);
+        return new ResponseEntity<>(policyList, HttpStatus.OK);
+    }
 
 }

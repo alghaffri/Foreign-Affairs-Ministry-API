@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Models.News;
+import com.example.demo.RequestObjects.RequestNews;
 import com.example.demo.Service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,35 +13,24 @@ import java.util.List;
 @RestController
 
 public class NewsController {
-    private final NewsService newsService;
-
     @Autowired
-    public NewsController(NewsService newsService) {
-        this.newsService = newsService;
-    }
-    @PostMapping
-    public ResponseEntity<News> addNews(@RequestBody News news) {
-        News newNews = newsService.addNews(news);
-        return new ResponseEntity<>(newNews, HttpStatus.CREATED);
-    }
-    @GetMapping
-    public ResponseEntity<List<News>> getAllNews() {
-        List<News> news = newsService.getAllNews();
-        return new ResponseEntity<>(news, HttpStatus.OK);
-    }
+    NewsService newsService;
+    @PostMapping("/api/news")
+    public ResponseEntity<Void> saveAccount (@RequestBody RequestNews requestNews) {
+        createNews(requestNews);
+        return ResponseEntity.ok().build();
 
-    @PutMapping("/{id}")
-    public ResponseEntity<News> updateNews(@PathVariable Long id, @RequestBody News news) {
-        News updatedNews = newsService.updateNews(news);
-        return new ResponseEntity<>(updatedNews, HttpStatus.OK);
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteNews(@PathVariable Long id) {
-        newsService.deleteNews(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public void createNews(RequestNews requestNews){
+        News news = new News();
+        news.setTitle(requestNews.getTitle());
+        news.setCountry(requestNews.getCountry());
+        news.setRegion(requestNews.getRegion());
+        news.setDetails(requestNews.getDetails());
+        news.setIsActive(true);
+        news.setCreatedDate(new Date());
+        newsService.addPolicy(news);
     }
-
-
 
 
 
